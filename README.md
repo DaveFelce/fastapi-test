@@ -13,3 +13,7 @@
 
 - `poetry run python asgi.py` or `poetry run uvicorn asgi:app --port=8000`
 
+## testing with curl
+
+- curl http://127.0.0.1:8000/fastapi-test/hello-world -H "Accept: application/json" -H "Authorization: Token {api_token}"
+
