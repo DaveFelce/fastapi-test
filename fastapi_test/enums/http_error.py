@@ -11,3 +11,18 @@ class HttpErrors(Enum):
             "code": "INVALID_TOKEN",
         },
     )
+    NO_USER_FOUND = HTTPException(
+        detail={
+            "display_message": "User not found for provided name.",
+            "code": "NO_USER_FOUND",
+        },
+        status_code=status.HTTP_404_NOT_FOUND,
+    )
+    USER_EXISTS = HTTPException(
+        detail={
+            "display_message": "It appears this user already exists.",
+            "code": "USER_EXISTS",
+            "fields": ["username"],
+        },
+        status_code=status.HTTP_409_CONFLICT,
+    )
