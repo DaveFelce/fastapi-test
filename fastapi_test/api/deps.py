@@ -1,7 +1,18 @@
+from typing import AsyncGenerator
+
 from fastapi import Depends, Header
 
 from fastapi_test.core.config import settings
+from fastapi_test.db.session import AsyncSessionMaker
 from fastapi_test.enums import HttpErrors
+
+
+async def get_session() -> AsyncGenerator:
+    session = AsyncSessionMaker()
+    try:
+        yield session
+    finally:
+        await session.close()
 
 
 def get_authorization_token(authorization: str = Header(None)) -> str:
