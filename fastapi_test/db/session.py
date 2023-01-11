@@ -11,7 +11,7 @@ else:
     null_pool = {}  # pragma: no cover
 
 # application name
-CONNECT_ARGS = {"application_name": "vela"}
+CONNECT_ARGS = {"application_name": "fastapi-test"}
 
 # future=True enables sqlalchemy core 2.0
 async_engine = create_async_engine(
