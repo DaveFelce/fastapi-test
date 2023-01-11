@@ -8,6 +8,7 @@
 ## running
 
 - `poetry install`
+- `poetry run alembic upgrade head`
 
 ### api run
 
@@ -15,10 +16,12 @@
 
 ## testing with curl
 
-- curl http://127.0.0.1:8000/fastapi-test/hello-world -H "Accept: application/json" -H "Authorization: Token {api_token}"
+- `curl -H "Content-Type: application/json" -H "Authorization: Token AUTH_TOKEN" -X POST -d '{"username":"dave","email":"test@test.com"}' http://127.0.0.1:8001/fastapi-test/user`
+- `curl http://127.0.0.1:8001/fastapi-test/user/dave -H "Accept: application/json" -H "Authorization: Token AUTH_TOKEN"`
 
-## Docker
+## docker-compose
 
-- docker build -t fastapi_test .
-- docker run -d --name fastapi_test_container -p 8000:8000 fastapi_test
+- `docker-compose -f .docker/development/docker-compose.yml up --build`
+
+the docker container exposes port 8001
 
