@@ -41,7 +41,7 @@ def test_post_user(db_session: "Session") -> None:
     }
 
     resp = client.post(f"{settings.API_PREFIX}/user", json=payload, headers=fastapi_test_auth_headers)
-    assert resp.status_code == status.HTTP_202_ACCEPTED
+    assert resp.status_code == status.HTTP_200_OK
 
     user = db_session.execute(select(User).where(User.username == username)).scalar_one()
     assert user.email == email

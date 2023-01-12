@@ -2,7 +2,7 @@ import logging
 
 from typing import Any
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
@@ -39,7 +39,6 @@ async def get_user(
 
 @user_router.post(
     path="/user",
-    status_code=status.HTTP_202_ACCEPTED,
 )
 async def post_user(
     payload: PostUserBodySchema,
